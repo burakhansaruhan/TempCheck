@@ -1,0 +1,124 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hour-at-city {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+  padding: 24px; /* küçük ekranlarda kutu kenarlara yapışmasın */
+  box-sizing: border-box;
+}
+
+.content-box {
+  width: 480px;
+  max-width: 92vw;
+  text-align: center;
+  border-radius: 16px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+}
+
+/* Form grubu */
+.input-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Ortak input/select görünümleri */
+.city-input,
+.day-select,
+.hour-select {
+  flex: 1;
+  padding: 10px 12px;
+  border: 2px solid #4facfe;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+}
+
+.city-input:focus,
+.day-select:focus,
+.hour-select:focus {
+  border-color: #00c3ff;
+  box-shadow: 0 0 0 3px rgba(0, 195, 255, 0.2);
+}
+
+/* Buton */
+.fetch-button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4facfe, #00c3ff);
+  color: #fff;
+  transition: transform 0.08s ease, filter 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.fetch-button:hover { filter: brightness(1.05); }
+.fetch-button:active { transform: translateY(1px); }
+.fetch-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hata olursa metni */
+.error-text {
+  color: #ff3b3b;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.result {
+  margin-top: 16px;
+  padding: 12px;
+  background: #f0faff;
+  border: 2px solid #4facfe;
+  border-radius: 12px;
+}
+
+.result-location {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.result-weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #222;
+}
+
+.weather-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.weather-text { font-weight: 600; }
+
+/* Küçük ekran düzeni: inputları alt alta getir */
+@media (max-width: 420px) {
+  .input-group {
+    flex-direction: column;
+  }
+  .fetch-button { width: 100%; }
+}
+
+/* Hareketi azalt ayarı */
+@media (prefers-reduced-motion: reduce) {
+  .fetch-button { transition: none; }
+}
