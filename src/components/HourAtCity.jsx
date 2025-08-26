@@ -2,8 +2,6 @@ import { useState, useMemo } from "react";
 
 const WEATHER_KEY = import.meta.env.VITE_WEATHER_KEY;
 const UNSPLASH_KEY = import.meta.env.VITE_UNSPLASH_KEY;
-console.log(import.meta.env.VITE_WEATHER_KEY);
-
 
 export default function HourAtCity() {
   const [city, setCity] = useState("");
