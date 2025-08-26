@@ -5,14 +5,13 @@ const UNSPLASH_KEY = import.meta.env.VITE_UNSPLASH_KEY;
 
 export default function HourAtCity() {
   const [city, setCity] = useState("");
-  const [day, setDay] = useState("today"); // today | tomorrow
+  const [day, setDay] = useState("today");
   const [hour, setHour] = useState("00");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
   const [data, setData] = useState(null);
   const [bgUrl, setBgUrl] = useState("");
 
-  // 00..23 saatleri
   const hours = useMemo(
     () => Array.from({ length: 24 }, (_, i) => String(i).padStart(2, "0")),
     []
@@ -27,7 +26,7 @@ export default function HourAtCity() {
 
     setLoading(true);
     try {
-      // WeatherAPI'den bugün + yarın tahminlerini al
+      // API den bugün ve yarını alıyoruz
       const weatherUrl = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_KEY}&q=${encodeURIComponent(
         q
       )}&days=2&aqi=no&alerts=no&lang=tr`;
@@ -45,14 +44,13 @@ export default function HourAtCity() {
       setData({
         city: `${json.location?.name}, ${json.location?.country}`,
         tz: json.location?.tz_id,
-        date: json.forecast.forecastday[dayIndex]?.date,
         time: match.time,
         temp: match.temp_c,
         text: match.condition?.text,
         icon: match.condition?.icon,
       });
 
-      // Unsplash'tan şehir fotoğrafı
+      // Unsplash APİ şehir fotoğrafı
       const imgRes = await fetch(
         `https://api.unsplash.com/photos/random?query=${encodeURIComponent(
           q
@@ -118,7 +116,7 @@ export default function HourAtCity() {
         {data && (
           <div className="result">
             <p className="result-location">
-              <strong>{data.city}</strong> — {data.date} {data.time} (
+              <strong>{data.city}</strong> — {data.time} (
               {data.tz})
             </p>
             <p className="result-weather">

@@ -11,7 +11,7 @@ html, body {
   justify-content: center;
   align-items: center;
   background: #222;
-  padding: 24px; /* küçük ekranlarda kutu kenarlara yapışmasın */
+  padding: 24px;
   box-sizing: border-box;
 }
 
@@ -33,7 +33,6 @@ html, body {
   margin-bottom: 16px;
 }
 
-/* Ortak input/select görünümleri */
 .city-input,
 .day-select,
 .hour-select {
@@ -110,7 +109,6 @@ html, body {
 
 .weather-text { font-weight: 600; }
 
-/* Küçük ekran düzeni: inputları alt alta getir */
 @media (max-width: 420px) {
   .input-group {
     flex-direction: column;
@@ -118,7 +116,6 @@ html, body {
   .fetch-button { width: 100%; }
 }
 
-/* Hareketi azalt ayarı */
 @media (prefers-reduced-motion: reduce) {
   .fetch-button { transition: none; }
 }
